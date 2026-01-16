@@ -441,39 +441,24 @@ if uploaded_file is not None:
             st.rerun()
 
 else:
-    # Welcome screen - Using Streamlit container with custom styling
+    # Welcome screen
     st.markdown("""
-        <style>
-        div[data-testid="stVerticalBlock"] > div:has(> div.welcome-header) {
-            background: linear-gradient(135deg, rgba(255, 126, 95, 0.1), rgba(254, 180, 123, 0.1));
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 126, 95, 0.3);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    with st.container():
-        st.markdown('<div class="welcome-header"></div>', unsafe_allow_html=True)
-        
-        st.markdown("## 👋 Welcome to TB X-ray Analyzer")
-        st.markdown("""
-        <p style='font-size: 1.15rem; line-height: 1.7; color: #e0e0e0;'>
-        This AI-powered tool helps radiologists and healthcare professionals detect tuberculosis 
-        in chest X-rays using advanced deep learning techniques.
-        </p>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("### 🚀 How to use:")
-        st.markdown("""
-        1. **Upload** a chest X-ray image using the file uploader above
-        2. **Wait** for the AI model to analyze the image
-        3. **Review** the classification results and confidence score
-        4. **Explore** the Grad-CAM heatmap to see which regions influenced the decision
-        5. **Examine** 3D visualizations and statistical analyses
-        """)
-        
+    <div class="info-box">
+        <h3>👋 Welcome to TB X-ray Analyzer</h3>
+        <p>This AI-powered tool helps radiologists and healthcare professionals detect tuberculosis in chest X-rays using advanced deep learning techniques.</p>
+        <br>
+        <h4>🚀 How to use:</h4>
+        <ol>
+            <li>Upload a chest X-ray image using the file uploader above</li>
+            <li>Wait for the AI model to analyze the image</li>
+            <li>Review the classification results and confidence score</li>
+            <li>Explore the Grad-CAM heatmap to see which regions influenced the decision</li>
+            <li>Examine 3D visualizations and statistical analyses</li>
+        </ol>
+        <br>
+        <p><strong>⚠️ Disclaimer:</strong> This tool is for educational and research purposes. Always consult with qualified medical professionals for diagnosis and treatment.</p>
+    </div>
+    """)
 
     # Sample images section
     st.markdown("### 📚 Sample X-ray Gallery")
