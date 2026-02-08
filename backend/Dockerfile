@@ -7,6 +7,9 @@ ENV PYTHONUNBUFFERED 1
 
 # Install system dependencies for OpenCV and other libraries
 RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
     libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
