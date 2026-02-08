@@ -86,13 +86,13 @@ export default function Dashboard() {
               </motion.div>
 
               <h1 className="max-w-4xl text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-transparent">
-                Precision Tuberculosis <br /> Detection via AI
+                Precision Tuberculosis <br /> Detection Model
               </h1>
 
               <p className="max-w-2xl text-lg md:text-xl text-neutral-400 mb-12 leading-relaxed">
-                Experience world-class diagnostic intelligence. Our advanced deep learning model
-                provides instantaneous analysis with clinical-grade accuracy and state-of-the-art
-                explainable AI visualizations.
+                Experience diagnostic intelligence. The advanced deep learning model provides
+                instantaneous analysis with clinical-grade accuracy and state-of-the-art explainable
+                AI visualizations.
               </p>
 
               <button
