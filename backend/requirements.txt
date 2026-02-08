@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+tensorflow
+tf-keras-vis
+opencv-python-headless
+pillow
+plotly
+numpy
+pydantic
+python-dotenv

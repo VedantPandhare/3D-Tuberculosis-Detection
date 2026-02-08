@@ -10,6 +10,10 @@ from tf_keras_vis.utils.scores import CategoricalScore
 import plotly.express as px
 from datetime import datetime
 
+# Configure Plotly to use SVG instead of WebGL for better browser compatibility
+import plotly.io as pio
+pio.renderers.default = "browser"
+
 # Page configuration
 st.set_page_config(
     page_title="TB X-ray Analyzer",
@@ -174,6 +178,13 @@ def create_3d_plot(z_data, title, colorscale='Viridis'):
         margin=dict(r=0, l=0, b=0, t=40),
         height=500
     )
+    
+    # Disable WebGL and use SVG/canvas rendering for better browser compatibility
+    fig.update_layout(
+        scene_dragmode='orbit',
+        scene=dict(xaxis=dict(showspikes=False), yaxis=dict(showspikes=False), zaxis=dict(showspikes=False))
+    )
+    
     return fig
 
 def create_histogram(image, title):
@@ -305,10 +316,12 @@ if uploaded_file is not None:
         col1, col2 = st.columns(2)
 
         with col1:
-            st.plotly_chart(create_3d_plot(gray_3d, "3D Original X-ray", "Greys"), use_container_width=True)
+            fig1 = create_3d_plot(gray_3d, "3D Original X-ray", "Greys")
+            st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": True, "toImageButtonOptions": {"format": "png"}})
 
         with col2:
-            st.plotly_chart(create_3d_plot(overlay_gray_3d, "3D Heatmap Overlay", "Hot"), use_container_width=True)
+            fig2 = create_3d_plot(overlay_gray_3d, "3D Heatmap Overlay", "Hot")
+            st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": True, "toImageButtonOptions": {"format": "png"}})
 
     with tab3:
         if show_histogram:
