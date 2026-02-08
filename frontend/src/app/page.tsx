@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
-import SettingsPanel from "@/components/SettingsPanel";
+import SettingsPanel from "../components/SettingsPanel";
 import FileUploader from "@/components/FileUploader";
 import DiagnosticCards from "@/components/DiagnosticCards";
 import AnalysisTabs from "@/components/AnalysisTabs";
@@ -28,7 +28,8 @@ export default function Dashboard() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8000/analyze", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const response = await fetch(`${apiUrl}/analyze`, {
         method: "POST",
         body: formData,
       });
