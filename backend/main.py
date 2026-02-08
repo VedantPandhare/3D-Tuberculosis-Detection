@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import os
 import cv2
 import numpy as np
 import tensorflow as tf
@@ -27,7 +28,7 @@ app.add_middleware(
 )
 
 # Load model
-MODEL_PATH = "../tb_model.h5"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "tb_model.h5")
 try:
     model = load_model(MODEL_PATH)
     gradcam_engine = Gradcam(model, model_modifier=ReplaceToLinear())
@@ -162,4 +163,5 @@ async def analyze_xray(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
