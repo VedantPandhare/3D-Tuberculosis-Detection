@@ -77,6 +77,14 @@ def create_3d_json(z_data, title, colorscale='Viridis'):
     )
     return json.loads(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
 
+@app.get("/health")
+async def health_check():
+    return {
+        "status": "ok",
+        "model_loaded": model is not None,
+        "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
+
 @app.post("/analyze")
 async def analyze_xray(file: UploadFile = File(...)):
     if model is None:

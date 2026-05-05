@@ -67,6 +67,49 @@ npm run dev
 ```
 *The application will be accessible at `http://localhost:3000`*
 
+---
+
+## 🔬 Model Information
+
+- **Architecture**: Custom CNN optimized for radiography data.
+- **Training Source**: TB Chest Radiography Database.
+- **Explainability**: Grad-CAM (Gradient-weighted Class Activation Mapping).
+
+---
+
+## 📡 Uptime Monitoring (UptimeRobot)
+
+This project is configured for monitoring via [UptimeRobot](https://uptimerobot.com).
+
+### Monitors to create
+
+| Monitor Name | Type | URL |
+|---|---|---|
+| TB Analyzer – Backend API | HTTP(s) | `https://<your-backend-domain>/health` |
+| TB Analyzer – Frontend | HTTP(s) | `https://<your-frontend-domain>` |
+
+### Setup steps
+
+1. Sign up at [uptimerobot.com](https://uptimerobot.com) (free tier: 50 monitors, 5-min intervals).
+2. Click **+ Add New Monitor**.
+3. Set **Monitor Type** → `HTTP(s)`.
+4. Paste the URL (replace `<your-backend-domain>` with your deployed host).
+5. For the backend monitor, set **Keyword** → `"status":"ok"` to verify the health payload.
+6. Set check interval to **5 minutes**.
+7. Add alert contacts (email/Slack/webhook) as needed.
+8. Copy the **Status Page** public URL and add the badge below.
+
+### Status badge
+
+Replace `<YOUR_MONITOR_ID>` after creating your monitor:
+
+```md
+[![Uptime Robot status](https://img.shields.io/uptimerobot/status/<YOUR_MONITOR_ID>)](https://stats.uptimerobot.com/<YOUR_STATUS_PAGE_ID>)
+```
+
+---
+
+
 ## ⚠️ Disclaimer
 
 **This application is for educational and research purposes only.** It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified physician or healthcare provider for medical concerns.
