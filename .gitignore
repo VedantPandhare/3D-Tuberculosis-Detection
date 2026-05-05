@@ -1,3 +1,7 @@
+# Dataset images (too large for git — use Git LFS or cloud storage)
+TB_Chest_Radiography_Database/
+dataset/
+
 # Python virtual environments
 venv/
 .venv/
